@@ -240,12 +240,13 @@ app.post('/api/demo/reset', async (req, res) => {
     await memoryContainer.resetToDefaultScenario();
     res.json({ message: 'NEXUS demo environment successfully reset to initial deterministic state.' });
   } catch (err: any) {
-    res.status(500).json({ error: err.message });
+    console.error('[RESET SCENARIO ERROR]', err);
+    res.status(500).json({ error: `${err.message} | Stack: ${err.stack || 'No stack trace available'}` });
   }
 });
 
 // --- VITE DEV / PRODUCTION STATIC SERVING ---
-const isVercel = !!process.env.VERCEL;
+const isVercel = !!(process.env.VERCEL || process.env.NOW_REGION || process.env.VERCEL_ENV || process.env.AWS_LAMBDA_FUNCTION_NAME);
 
 if (process.env.NODE_ENV !== 'production' && !isVercel) {
   createViteServer({
