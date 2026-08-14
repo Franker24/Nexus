@@ -1,0 +1,6 @@
+{
+  "name": "NEXUS",
+  "description": "Autonomous AI Operations Platform for enterprise agent fleet management, tool execution, security policy governance, and human approvals.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
