@@ -269,4 +269,4 @@ if (!isVercel) {
   });
 }
 
-export default app;
+module.exports = app;
